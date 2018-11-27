@@ -1,9 +1,9 @@
 import React from 'react';
-import { Platform, StatusBar, View, StyleSheet, Text } from 'react-native';
+import { Platform, StatusBar, View, StyleSheet, AsyncStorage } from 'react-native';
 import { Root, Icon } from 'native-base';
 import { createStore, applyMiddleware, compose } from 'redux';
 import { Provider, connect } from 'react-redux';
-import { persistStore, autoRehydrate, AsyncStorage } from 'redux-persist';
+import { persistStore, autoRehydrate } from 'redux-persist';
 import ReduxThunk from 'redux-thunk';
 import reducers from './reducers/';
 import { AppLoading, Asset, Font } from 'expo';
@@ -12,7 +12,6 @@ import { Router, Scene } from 'react-native-router-flux';
 
 // import screens 
 import Home from './screens/Home';
-import TimeLine from './screens/TimeLine';
 
 export let store = compose(
     applyMiddleware(ReduxThunk),
@@ -44,7 +43,6 @@ export default class App extends React.Component {
 							<Scene key="root">
 								<Scene key="tabbar" tabs hideNavBar>
 									<Scene key="home" component={ Home } initial IconName="home" IconType="Entypo" icon={ TabIcon } hideNavBar/>
-									<Scene key="timeline" component={ TimeLine } IconName="th-large" IconType="FontAwesome" icon={ TabIcon } hideNavBar/>
 								</Scene>
 							</Scene>
 						</Router>
